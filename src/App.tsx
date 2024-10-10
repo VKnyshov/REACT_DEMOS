@@ -15,7 +15,7 @@ const App: FC = () => {
             .then(value => value.json())
             .then(responce => {
 
-                // console.log(responce);
+                console.log(responce);
                 setUsers(responce.users);
             });
 
@@ -33,7 +33,7 @@ const App: FC = () => {
             .then(value => value.json())
             .then(responce => {
 
-                // console.log(responce.posts);
+                console.log(responce.posts);
                 setPosts(responce.posts);
             });
 
@@ -44,19 +44,20 @@ const App: FC = () => {
 
 
 // -----------------------------------------------
-const [postId,setPostId] = useState<number>(0) ;
-    const clickHandler = (id:number) =>{
-       setPostId(id);
-        console.log(id);
+const [userId, setUserId ] = useState<number>(0);
+    const clickHandler = (id:number) => {
+        // console.log('.')
+       setUserId(id)
     }
+
 
 // ----------------------------------------
     return (
         <>
-<hr/>
-<h2>{postId}</h2>
+            <hr/>
+            <p>{userId}</p>
 
-<hr/>
+            <hr/>
 
             {
                 users.map((user, index) =>
@@ -75,17 +76,17 @@ const [postId,setPostId] = useState<number>(0) ;
 
 
             <hr/>
-            {/*{*/}
-            {/*    posts.map((post: IPost, index) =>*/}
+            {
+                posts.map((post: IPost, index) =>
 
-            {/*        <PostComponent*/}
-            {/*            key={index}*/}
-            {/*            id={post.id}*/}
-            {/*            title={post.title}*/}
-            {/*            body={post.body}*/}
-            {/*        />*/}
-            {/*    )*/}
-            {/*}*/}
+                    <PostComponent
+                        key={index}
+                        id={post.id}
+                        title={post.title}
+                        body={post.body}
+                    />
+                )
+            }
 
 
             <hr/>
