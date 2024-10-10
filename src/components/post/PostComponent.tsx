@@ -1,51 +1,44 @@
-import React, { useEffect, useState} from 'react';
+import { FC, useEffect, useState} from 'react';
 import {IPost} from "../../model/IPost";
 
-// type UserComponentWithChildren <T> =T & {children?: ReactNode};
-function PostComponent(userId:number){
-    // if (!userId) return null;
+interface PostComponentProps {
+    userId: number;
+}
 
-
+const PostComponent: FC<PostComponentProps> = ({userId}) => {
     const [posts, setPosts] = useState<IPost[]>([]);
 
     useEffect(() => {
+        if (!userId) {
+            setPosts([])
+        } else {
+            fetch('https://dummyjson.com/posts/user/' + userId)
+                .then(value => value.json())
+                .then(responce => {
+                    console.log(responce);
+                    setPosts(responce.posts);
+                });
 
-        fetch('https://dummyjson.com/posts/user' + userId)
-            .then(value => value.json())
-            .then(responce => {
-
-                console.log(responce);
-                setPosts(responce.posts);
-            });
-
-        return () => {
-            console.log('end')
+            return () => {
+                console.log('end')
+            }
         }
-    }, []);
-
-
-    const [postId,setPostId] = useState<number>(0) ;
-    const clickHandler = (id:number) =>{
-        setPostId(id);
-        console.log(id);
-    }
-
-
-
-
+    }, [userId]);
 
     return (
-        <>{
+        <>
+        {
             posts.map((post: IPost) =>
-                <div>
-                    {post.id} <br/>
-                    {post.title}<br/>
-                    {post.body}<br/>
+                <div key={post.id}>
+                    <p>
+                        {post.id} <br/>
+                        {post.title}<br/>
+                        {post.body}<br/>
+                    </p>
                 </div>
             )
         }
-</>
-
+        </>
     );
 };
 
