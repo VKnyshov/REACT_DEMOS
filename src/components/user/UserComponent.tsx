@@ -1,20 +1,22 @@
-import React, {FC, ReactNode} from 'react';
+import React, {FC, useState} from 'react';
 import IUser from "../../model/IUser";
+import PostComponent from "../post/PostComponent";
 
 
-type UserComponentWithChildren <T> = T & {children?: ReactNode} & {clickHandler: (id:number) => void};
-const UserComponent:FC<UserComponentWithChildren<IUser>> = ({id, firstName, lastName, gender, maidenName, age, children, clickHandler}) => {
+interface UserComponentProps {
+    user: IUser;
+}
+
+const UserComponent: FC<UserComponentProps> = ({user}) => {
+    // const [userId, setUserId] = useState(0);
+
     return (
-
-            <div> {id} - {firstName} - {lastName}
-            <button onClick={() => {
-                clickHandler(id)
-
-
-            }}>chose</button>
-            </div>
-
-
+        <div>
+            {user.id}. {user.firstName} {user.lastName} <br/>
+            {/*<button onClick={() => setUserId(user.id)}>chose</button>*/}
+            {/*<PostComponent userId={userId}/>*/}
+            {/*<hr/>*/}
+        </div>
     );
 };
 

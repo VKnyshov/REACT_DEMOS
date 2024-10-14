@@ -1,14 +1,42 @@
 import React, {FC, useEffect, useState} from 'react';
 import {IPost} from "../../model/IPost";
 
-// type UserComponentWithChildren <T> =T & {children?: ReactNode};
-const PostComponent:FC<IPost> = (post) => {
+interface PostComponentProps {
+    userId: number;
+}
+
+const PostComponent:FC<PostComponentProps> = ({userId}) => {
+    const [posts, setPosts] = useState<IPost[]>([])
+
+    useEffect(() => {
+        if (!userId){
+            setPosts([])
+        } else {
+            fetch('https://dummyjson.com/posts/user/'+userId)
+                .then(value => value.json())
+                .then( responce => {
+                    console.log(responce)
+                    setPosts(responce.posts);
+                    });
+
+            return () =>{
+                console.log('end')
+            }
+        }
+    }, [userId]);
+
     return (
-        <div>
-            {post.id} <br/>
-            {post.title}<br/>
-            {post.body}<br/>
-        </div>
+        <>
+            {posts.map((post:IPost) =>
+                <div key={post.id}>
+                  <p>{post.id}</p>
+                  <p>{post.title}</p>
+                  <p>{post.body}</p>
+                </div>
+                )
+            }
+
+        </>
     );
 };
 

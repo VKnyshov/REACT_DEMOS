@@ -2,19 +2,17 @@ import React, {FC, useEffect, useState} from 'react';
 import './App.css';
 import IUser from "./model/IUser";
 import UserComponent from "./components/user/UserComponent";
-import {IPost} from "./model/IPost";
 import PostComponent from "./components/post/PostComponent";
 
 const App: FC = () => {
-
     const [users, setUsers] = useState<IUser[]>([]);
+    const [userId, setUserId] = useState(0);
+
 
     useEffect(() => {
-
         fetch('https://dummyjson.com/users')
             .then(value => value.json())
             .then(responce => {
-
                 console.log(responce);
                 setUsers(responce.users);
             });
@@ -25,72 +23,18 @@ const App: FC = () => {
     }, []);
 
 
-    const [posts, setPosts] = useState<IPost[]>([]);
-
-    useEffect(() => {
-
-        fetch('https://dummyjson.com/posts')
-            .then(value => value.json())
-            .then(responce => {
-
-                console.log(responce.posts);
-                setPosts(responce.posts);
-            });
-
-        return () => {
-            console.log('end')
-        }
-    }, []);
-
-
-// -----------------------------------------------
-const [userId, setUserId ] = useState<number>(0);
-    const clickHandler = (id:number) => {
-        // console.log('.')
-       setUserId(id)
-    }
-
-
-// ----------------------------------------
     return (
         <>
             <hr/>
-            <p>{userId}</p>
-
+            <PostComponent key={userId} userId={userId}/>
             <hr/>
-
-            {
-                users.map((user, index) =>
-                    <UserComponent
-                        clickHandler={clickHandler}
-                        key={index}
-                        id={user.id}
-                        firstName={user.firstName}
-                        lastName={user.lastName}
-                        age={user.age}
-                        gender={user.gender}
-                        maidenName={user.maidenName}
-                    />)
-
-            }
-
-
-            <hr/>
-            {
-                posts.map((post: IPost, index) =>
-
-                    <PostComponent
-                        key={index}
-                        id={post.id}
-                        title={post.title}
-                        body={post.body}
-                    />
-                )
-            }
-
-
-            <hr/>
-
+            {users.map((user) =>
+                <div key={user.id}>
+                    <UserComponent user={user}/>
+                    <button onClick={() => setUserId(user.id)}>chose</button>
+                    <hr/>
+                </div>
+            )}
         </>
     );
 }
