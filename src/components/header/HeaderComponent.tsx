@@ -1,17 +1,23 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
+import styles from "./Header.module.css";
+
+
 
 const HeaderComponent = () => {
     return (
-        <div>
-            <NavLink to={'/'}>Home</NavLink> <br/>
+        <>
+    <ul className={styles.menu}>
 
-            <NavLink to={'about'}>about</NavLink> <br/>
-            <NavLink to={'contacts'}>contacts</NavLink>
-            <hr/>
-
-        </div>
-    );
+        <li><Link to={'/'}>Home</Link></li>
+        <li><Link to={'users'}>Users</Link></li>
+        <li><Link to={'posts'}>Posts</Link></li>
+        <li><Link to={'comments'}>Comments</Link></li>
+    </ul>
+    <hr/>
+        </>
+)
+    ;
 };
 
 export default HeaderComponent;

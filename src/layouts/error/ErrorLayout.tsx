@@ -7,7 +7,7 @@ const ErrorLayout = () => {
         <div>
             <HeaderComponent/>
             <hr/>
-            Error 404, can't find URL
+            <h2>Error 404, can't find URL</h2>
             <FooterComponent/>
         </div>
     );
