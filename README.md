@@ -1,5 +1,12 @@
 # Project location
-https://github.com/OktenSchool/may-2024-react
+https://github.com/VKnyshov/REACT_DEMOS/tree/master
+
+HW1
+https://github.com/VKnyshov/REACT_DEMOS/tree/HW1
+HW2
+https://github.com/VKnyshov/REACT_DEMOS/tree/HW2
+HW3
+https://github.com/VKnyshov/REACT_DEMOS/tree/HW3
 
 
 
