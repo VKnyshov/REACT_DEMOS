@@ -1,12 +1,13 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {useLocation} from "react-router-dom";
 
-const AllInfByUsersPage: FC<any> = () => {
-    const {state} = useLocation();
+const AllInfByUsersPage  = () => {
+
+    const {state}  = useLocation();
+    console.log('User for id', state);
     return (
         <>
-            <h3>{state.id}. {state.name}</h3>
-            <p>{state.email}</p>
+             <p>{state.email}</p>
             <p>{state.phone}</p>
             <p>{state.website}</p>
         </>

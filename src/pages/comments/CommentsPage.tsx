@@ -1,31 +1,29 @@
 import React, {useEffect, useState} from 'react';
 import {IComments} from "../../models/IComments";
+import {getComments} from "../../services/api.service";
 
 const CommentsPage = () => {
-    const [comments, setComments] = useState([])
+    const [comments, setComments] = useState<IComments[]>([])
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/comments/')
-            .then(res => res.json())
-            .then(res => {
-                console.log(res)
-                setComments(res);
-            });
+        getComments().then(value => {
+            console.log('Comments mas', value)
+            setComments (value);
+        });
     }, []);
-
 
     return (
         <>
             {
-                comments.map((comment: IComments) =>
-                    <>
-                    <p>{comment.id}</p>
-                    <p>{comment.postId}</p>
-                    <p>{comment.name}</p>
-                    <p>{comment.email}</p>
-                    <p>{comment.body}</p>
-<hr/>
-                    </>
+                comments.map((comment: IComments, index) =>
+                    <div key={index}>
+                        <p>{comment.id}</p>
+                        <p>{comment.postId}</p>
+                        <p>{comment.name}</p>
+                        <p>{comment.email}</p>
+                        <p>{comment.body}</p>
+                        <hr/>
+                    </div>
                 )
             }
         </>
