@@ -2,10 +2,9 @@ import {createBrowserRouter} from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import ErrorLayout from "../layouts/error/ErrorLayout";
 import UsersPage from "../pages/user/UsersPage";
+import AllInfByUsersPage from "../pages/user/AllInfByUsersPage";
 import PostsPage from "../pages/posts/PostsPage";
 import CommentsPage from "../pages/comments/CommentsPage";
-import AllInfByUsersPage from "../pages/user/AllInfByUsersPage";
-
 
 export const routes = createBrowserRouter([
     {
