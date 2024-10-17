@@ -17,11 +17,11 @@ const CommentsPage = () => {
             {
                 comments.map((comment: IComments, index) =>
                     <div key={index}>
-                        <p>{comment.id}</p>
-                        <p>{comment.postId}</p>
-                        <p>{comment.name}</p>
-                        <p>{comment.email}</p>
-                        <p>{comment.body}</p>
+                        <h3>ID коментаря - {comment.id}</h3>
+                        <p>ID поста -{comment.postId}</p>
+                        <p>Найменування коментаря: {comment.name}</p>
+                        <p>Імейл користувача: {comment.email}</p>
+                        <p>Комментар: {comment.body}</p>
                         <hr/>
                     </div>
                 )

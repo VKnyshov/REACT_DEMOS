@@ -18,10 +18,10 @@ const PostsPage = () => {
             {
                 posts.map((post: IPost, index) => (
                     <div key={index}>
-                        <p>{post.userId}</p>
-                        <p>{post.id}</p>
-                        <p>{post.title}</p>
-                        <p>{post.body}</p>
+                        <p>ID юзера - {post.userId}</p>
+                        <p>ID поста - {post.id}</p>
+                        <p>Найменування паста: {post.title}</p>
+                        <p>Пост: {post.body}</p>
                         <hr/>
 
                     </div>

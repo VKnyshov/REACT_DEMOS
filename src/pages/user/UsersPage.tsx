@@ -17,7 +17,7 @@ const UsersPage = () => {
         <div>
             <h2>Всі юзери</h2>
             {
-               users && users.map((user: IUser, index) => (
+               users.map((user: IUser, index) => (
                     <div key={index}>
                         <NavLink to={user.id.toString()} state={user}><p>{user.id}. {user.name}</p></NavLink>
                     </div>
