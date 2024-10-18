@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {getUsers} from "../../services/api.service";
 import {IUser} from "../../models/IUser";
 
@@ -13,16 +13,30 @@ const UsersPage = () => {
         });
     }, []);
 
+    const navigate = useNavigate();
+    // const onClickNavigation = () =>{
+    //     navigate(user.id.toString(),{state:{user}})
+    // };
+
+
+
+
     return (
+
         <div>
             <h2>Всі юзери</h2>
             {
                users.map((user: IUser, index) => (
-                    <div key={index}>
-                        <NavLink to={user.id.toString()} state={user}><p>{user.id}. {user.name}</p></NavLink>
-                    </div>
-                ))
+                   <div key={index}>
+                      {/*<h2> {user.id}. {user.name}</h2>*/}
+                       <button onClick={() =>
+                           {navigate(user.id.toString(),{state:{user}})
+                           }
+                       }>{user.id}. {user.name}</button>
+                   </div>
+               ))
             }
+
         </div>
     );
 };

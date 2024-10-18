@@ -4,12 +4,15 @@ import {useLocation} from "react-router-dom";
 const AllInfByUsersPage  = () => {
 
     const {state}  = useLocation();
+    const user = state.user;
+
     console.log('User for id', state);
+
     return (
         <>
-             <p>{state.email}</p>
-            <p>{state.phone}</p>
-            <p>{state.website}</p>
+            <p>{user.email}</p>
+            <p>{user.phone}</p>
+            <p>{user.website}</p>
         </>
     );
 };

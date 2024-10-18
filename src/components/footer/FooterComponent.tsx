@@ -4,7 +4,7 @@ const FooterComponent = () => {
     return (
         <div>
             <hr/>
-            footerfooterfooterfooterfooterfooterfooterfooterfooterfooterfooterfooterfooterfooterfooterfooterfooterfooter
+
         </div>
     );
 };
