@@ -8,8 +8,8 @@ const Users: FC<UsersProps> = ({users}) => {
     return (
         <div>
             {
-                users.map(user=> (
-                    <div>{user.id}. {user.firstName} {user.lastName}</div>
+                users.map((user,index)=> (
+                    <div key={index}>{user.id}. {user.firstName} {user.lastName}</div>
                 ))
             }
         </div>

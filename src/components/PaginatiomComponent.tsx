@@ -1,8 +1,9 @@
-import React, {useEffect} from 'react';
+import React, {FC} from 'react';
 import {useSearchParams} from "react-router-dom";
-import {apiService} from "../services/api.service";
 
-const PaginatiomComponent = () => {
+type PaginatiomProps = {flag: boolean};
+
+const PaginatiomComponent: FC<PaginatiomProps> = ({flag}) => {
     const [query, setQuery] = useSearchParams({page: '1'})
 
 
@@ -30,7 +31,7 @@ const PaginatiomComponent = () => {
     return (
         <div>
             <button onClick={onclickPrevHandler}>Prev</button>
-            <button onClick={onclickNextHandler}>Next</button>
+            <button onClick={onclickNextHandler} disabled={flag}>Next</button>
         </div>
     );
 };
