@@ -18,7 +18,8 @@ const UsersPage = () => {
                 .getAll(+page)
                 .then(value => {
                     setUsers(value.users);
-                    const lastId = value.users[value.users.length - 1].id;
+                    // console.log('must see that', value.users);
+                    const lastId = value.users [value.users.length - 1].id;
                     if (lastId >= value.total) {
                         setFlag(true);
                     }
@@ -28,8 +29,6 @@ const UsersPage = () => {
                 });
         }
     }, [query]);
-
-
     return (
         <div>
             <Users users={users}/>

@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
 
 export const apiService = {
     userServise: {
-        getAll: async (page: number): Promise<IDJResponse & { users: IUser[] }> => {
+        getAll: async (page: number): Promise<IDJResponse & {users: IUser[] }> => {
             const skip = (page - 1) * 30;
 
             const {data} = await axiosInstance.get<IDJResponse & { users: IUser[] }>('/users', {
