@@ -5,7 +5,7 @@ const HomePage = () => {
         <div>
             hommmmmmmmeeeeeee
 
-            {/*<FormComponent/>*/}
+            <FormComponent/>
         </div>
     );
 };
