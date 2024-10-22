@@ -4,7 +4,6 @@ export const postValidator = joi.object().keys({
     userId: joi.number().required().min(1)
         .messages({
             "number.min":"ID повинен бути більше 1",
-            "any.empty": "введіть ID користувача",
         }),
     id: joi.number().required().min(1).max(30),
     title: joi.string().required().min(3).max(20)
