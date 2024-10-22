@@ -56,7 +56,6 @@ const FormComponent = () => {
                 <div><input type="text" placeholder={'Body'} {...register('body')}/></div>
                 {errors.body && <div>{errors.body.message}</div>}
 
-
                 <button disabled={!isValid}>save</button>
             </form>
 
