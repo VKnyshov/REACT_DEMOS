@@ -1,6 +1,5 @@
-export interface FormProps {
+export interface IFormProps {
 	userId: number;
-	id: number;
 	title: string;
 	body: string;
 }
