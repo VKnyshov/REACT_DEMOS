@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form";
 import {FormProps} from "../models/FormProps";
 import {joiResolver} from "@hookform/resolvers/joi";
 import {postValidator} from "../validators/post.validator";
+import axios from "axios";
 
 
 const FormComponent = () => {
@@ -20,8 +21,10 @@ const FormComponent = () => {
 
     const customHandler = (dataFromForm: FormProps) => {
         console.log('want to send', dataFromForm);
-        fetch('https://jsonplaceholder.typicode.com/posts/' + dataFromForm.userId, {
-            method: 'PUT',
+
+        // ..........................................
+        fetch('https://jsonplaceholder.typicode.com/posts/', {
+            method: 'POST',
             body: JSON.stringify(dataFromForm),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -31,6 +34,21 @@ const FormComponent = () => {
             .then((json) =>
                 console.log(json)
             );
+        // ..........................................
+
+
+        axios({
+            method: 'POST',
+            url: 'https://jsonplaceholder.typicode.com/posts/',
+            params: dataFromForm
+        }).then((response) => {
+            console.log('second style', response.data);
+        })
+
+
+        // ..........................................
+
+
     };
 
 
