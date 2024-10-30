@@ -20,7 +20,7 @@ const PostsComponent = () => {
         <div>
             {posts.map((post: IPostModel, index) => (
                     <div key={index}>
-                        <h3>ID of post - {post.id}</h3>
+                        <h3>Post ID - {post.id}</h3>
                         <p>User ID - {post.userId}</p>
                         <h4>Title - {post.title}</h4>
                         <p>Body - {post.body}</p>

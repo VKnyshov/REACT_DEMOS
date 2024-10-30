@@ -17,14 +17,13 @@ const CommentsComponent = () => {
             {
                 comments.map((comment: ICommentModel, index) => (
                     <div key={index}>
-                        <p>Comment ID - {comment.id}</p>
-                        <p>Post ID - {comment.postId}</p>
-                        <p>Email - {comment.email}</p>
+                        <h3>Post ID - {comment.postId}</h3>
+                        <h4>Comment ID - {comment.id}</h4>
+                        <p>Email: {comment.email}</p>
                         <h4>Comment Name - {comment.name}</h4>
-                        <p>Comment body - {comment.body}</p>
-<hr/>
-<hr/>
-
+                        <p>Comment body: {comment.body}</p>
+                        <hr/>
+                        <hr/>
                     </div>
                 ))
             }
