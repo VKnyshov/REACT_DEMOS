@@ -12,25 +12,22 @@ const MainLayout = () => {
 
     const [posts, setPosts] = useState<IPostModel[]>([])
     const [comments, setComments] = useState<ICommentModel[]>([])
-    useEffect(() => {
+
+
+   useEffect(() => {
         postService.getPosts().then(value => setPosts(value.data));
         commentService.getComments().then(value => setComments(value.data));
     }, []);
-
-
-
-
-
 
     return (
         <>
             <MyContext.Provider value={
                 {
                     postStore:{
-                        allPosts:[]
+                        allPosts:posts
                     },
                     commentStore:{
-                        allComments:[]
+                        allComments:comments
                     }
                 }
 

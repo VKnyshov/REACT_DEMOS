@@ -1,21 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {ICommentModel} from "../models/ICommentModel";
-import {commentService} from "../services/api.service";
+import {useContextProvider} from "../context/ContextProvider";
 
 const CommentsComponent = () => {
 
-    const [comments, setComments] = useState<ICommentModel[]>([])
-    useEffect(() => {
-        commentService.getComments()
-            .then(value => {
-                console.log(value.data)
-                setComments(value.data)
-            })
-    }, []);
+    const {commentStore:{allComments}}  = useContextProvider()
     return (
         <div>
             {
-                comments.map((comment: ICommentModel, index) => (
+                allComments.map((comment: ICommentModel, index) => (
                     <div key={index}>
                         <h3>Post ID - {comment.postId}</h3>
                         <h4>Comment ID - {comment.id}</h4>

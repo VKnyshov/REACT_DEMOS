@@ -1,24 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import {postService} from "../services/api.service";
+import React from 'react';
 import {IPostModel} from "../models/IPostModel";
+import {useContextProvider} from "../context/ContextProvider";
 
 const PostsComponent = () => {
-
-    const [posts, setPosts] = useState<IPostModel[]>([])
-
-
-    useEffect(() => {
-        postService.getPosts().then(value => {
-            console.log('Must have:', value.data)
-            setPosts(value.data)
-
-        })
-
-    }, []);
+const {postStore:{allPosts}}= useContextProvider()
 
     return (
         <div>
-            {posts.map((post: IPostModel, index) => (
+            {allPosts.map((post: IPostModel, index) => (
                     <div key={index}>
                         <h3>Post ID - {post.id}</h3>
                         <p>User ID - {post.userId}</p>
