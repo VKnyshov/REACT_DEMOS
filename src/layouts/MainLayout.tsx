@@ -1,40 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Outlet} from "react-router-dom";
 import HeaderComponent from "../components/HeaderComponent";
-import {MyContext} from "../context/ContextProvider";
-import {IPostModel} from "../models/IPostModel";
-import {ICommentModel} from "../models/ICommentModel";
 import {commentService, postService} from "../services/api.service";
-
+import {useStore} from "../context/store";
 
 
 const MainLayout = () => {
 
-    const [posts, setPosts] = useState<IPostModel[]>([])
-    const [comments, setComments] = useState<ICommentModel[]>([])
+const {postStore,commentStore}= useStore()
+    useEffect(() => {
+        postService.getPosts().then(value => postStore.loadPosts(value.data));
+        commentService.getComments().then(value =>  commentStore.loadComments(value.data));
 
+    }, [postStore,commentStore]);
 
-   useEffect(() => {
-        postService.getPosts().then(value => setPosts(value.data));
-        commentService.getComments().then(value => setComments(value.data));
-    }, []);
 
     return (
         <>
-            <MyContext.Provider value={
-                {
-                    postStore:{
-                        allPosts:posts
-                    },
-                    commentStore:{
-                        allComments:comments
-                    }
-                }
-
-            }>
             <HeaderComponent/>
             <Outlet/>
-            </MyContext.Provider>
         </>
     );
 };

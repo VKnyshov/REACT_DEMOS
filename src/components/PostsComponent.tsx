@@ -1,10 +1,9 @@
 import React from 'react';
 import {IPostModel} from "../models/IPostModel";
-import {useContextProvider} from "../context/ContextProvider";
+import {useStore} from "../context/store";
 
 const PostsComponent = () => {
-const {postStore:{allPosts}}= useContextProvider()
-
+const {postStore:{allPosts}} = useStore();
     return (
         <div>
             {allPosts.map((post: IPostModel, index) => (
