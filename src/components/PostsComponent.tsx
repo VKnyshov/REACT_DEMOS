@@ -3,7 +3,7 @@ import {IPostModel} from "../models/IPostModel";
 import {useStore} from "../context/store";
 
 const PostsComponent = () => {
-const {postStore:{allPosts}} = useStore();
+const {postSlice:{allPosts}} = useStore();
     return (
         <div>
             {allPosts.map((post: IPostModel, index) => (

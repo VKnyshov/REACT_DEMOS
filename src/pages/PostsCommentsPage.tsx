@@ -1,5 +1,4 @@
 import React from 'react';
-import PostsComponent from "../components/PostsComponent";
 import PostCommentsComponent from "../components/PostCommentsComponent";
 
 const PostsCommentsPage = () => {

@@ -3,7 +3,7 @@ import {ICommentModel} from "../models/ICommentModel";
 import {useStore} from "../context/store";
 
 const CommentsComponent = () => {
-const {commentStore: {allComments}} = useStore()
+const {commentSlice: {allComments}} = useStore()
 
     return (
         <div>

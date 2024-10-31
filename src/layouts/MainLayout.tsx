@@ -1,18 +1,19 @@
 import React, {useEffect} from 'react';
 import {Outlet} from "react-router-dom";
 import HeaderComponent from "../components/HeaderComponent";
-import {commentService, postService} from "../services/api.service";
+import {commentService, postService, userService} from "../services/api.service";
 import {useStore} from "../context/store";
 
 
 const MainLayout = () => {
 
-const {postStore,commentStore}= useStore()
+const {postSlice,commentSlice,userSlice}= useStore()
     useEffect(() => {
-        postService.getPosts().then(value => postStore.loadPosts(value.data));
-        commentService.getComments().then(value =>  commentStore.loadComments(value.data));
+        userService.getUsers().then(value => userSlice.loadUsers(value.data))
+        postService.getPosts().then(value => postSlice.loadPosts(value.data));
+        commentService.getComments().then(value =>  commentSlice.loadComments(value.data));
 
-    }, [postStore,commentStore]);
+    }, []);
 
 
     return (

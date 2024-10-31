@@ -3,7 +3,7 @@ import {PostWithCommentModel} from "../models/PostWithCommentModel";
 import {useStore} from "../context/store";
 
 const PostCommentsComponent = () => {
-const {postStore:{allPosts}, commentStore:{allComments}} = useStore()
+const {postSlice:{allPosts}, commentSlice:{allComments}} = useStore()
 
     const [postWithCommentsState, setPostWithCommentsState] = useState<PostWithCommentModel[]>([])
 
@@ -20,13 +20,13 @@ const {postStore:{allPosts}, commentStore:{allComments}} = useStore()
     return (
         <div>
             {
-                postWithCommentsState.map((post) =>
-                    <div>
+                postWithCommentsState.map((post,userId) =>
+                    <div key={userId}>
                         <h3>{post.id}. {post.title}</h3>
                         <ul>
                             {
-                                post.comments.map((comment) =>
-                                    <li>{comment.id}. {comment.body}</li>
+                                post.comments.map((comment,userId) =>
+                                    <li key={userId}>{comment.id}. {comment.body}</li>
                                 )}
 
                         </ul>

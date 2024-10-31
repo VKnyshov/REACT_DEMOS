@@ -1,41 +1,62 @@
 import {IPostModel} from "../models/IPostModel";
 import {ICommentModel} from "../models/ICommentModel";
 import {create} from "zustand/react";
+import {IUserModel} from "../models/IUserModel";
 
 type StoreType = {
-    postStore: {
+    userSlice:{
+        allUsers:IUserModel[],
+        loadUsers:(users: IUserModel[])=>void
+    }
+    postSlice: {
         allPosts: IPostModel[],
         loadPosts: (posts: IPostModel[]) => void
     },
-    commentStore: {
+    commentSlice: {
         allComments: ICommentModel[],
         loadComments: (comments: ICommentModel[]) => void
     }
 };
 
 export const useStore = create<StoreType>()(set => ({
-    postStore: {
+    userSlice:{
+        allUsers:[],
+        loadUsers: (users: IUserModel[]) => {
+            return set ((state)=>{
+                return{
+                    ...state,
+                    userSlice:{
+                        ...state.userSlice,
+                        allUsers:users
+                    }
+                }
+            })
+        }
+
+    },
+
+    postSlice: {
         allPosts: [],
         loadPosts: (posts: IPostModel[]) => {
             return set((state) => {
                 return {
                     ...state,
-                    postStore: {
-                        ...state.postStore,
+                    postSlice: {
+                        ...state.postSlice,
                         allPosts: posts,
                     }
                 }
             });
         },
     },
-    commentStore: {
+    commentSlice: {
         allComments: [],
         loadComments: (comments: ICommentModel[]) => {
             return set((state) => {
                 return {
                     ...state,
-                    commentStore: {
-                        ...state.commentStore,
+                    commentSlice: {
+                        ...state.commentSlice,
                         allComments: comments,
                     }
                 }
