@@ -1,37 +1,26 @@
-import React, {useEffect, useMemo, useState} from 'react';
-import {PostWithCommentModel} from "../models/PostWithCommentModel";
-import {useStore} from "../context/store";
+import React, {useEffect} from 'react';
+import {commentActions, postActions, useAppDispatch, useAppSelector} from "../redux/store";
 
 const PostCommentsComponent = () => {
-const {postSlice:{allPosts}, commentSlice:{allComments}} = useStore()
 
-    const [postWithCommentsState, setPostWithCommentsState] = useState<PostWithCommentModel[]>([])
-
-    const postsWithCommentsArray = useMemo(() => {
-        return allPosts.map(post => {
-            return {...post, comments: allComments.filter(comment => comment.postId === post.id)};
-        })
-    }, [allPosts, allComments]);
-
+    const dispatch =  useAppDispatch();
+    const {postSlice:{posts},commentSlice:{comments}}  = useAppSelector(state => state);
     useEffect(() => {
-        setPostWithCommentsState(postsWithCommentsArray);
-    }, [postsWithCommentsArray]);
+        dispatch(postActions.loadPosts());
+        dispatch(commentActions.loadComments());
+    }, []);
 
     return (
         <div>
             {
-                postWithCommentsState.map((post,userId) =>
-                    <div key={userId}>
-                        <h3>{post.id}. {post.title}</h3>
-                        <ul>
-                            {
-                                post.comments.map((comment,userId) =>
-                                    <li key={userId}>{comment.id}. {comment.body}</li>
-                                )}
+                posts.map((post, index) =>
+                    <div key={index}>{post.id}. {post.title}</div>)
 
-                        </ul>
-
-                    </div>
+                      }
+                      <hr/>
+            {
+                comments.map((comment, index) =>
+                <div key={index}>{comment.id}. {comment.body}</div>
                 )
             }
         </div>

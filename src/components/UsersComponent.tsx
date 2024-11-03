@@ -1,13 +1,18 @@
-import React from 'react';
-import {useStore} from "../context/store";
-import {IUserModel} from "../models/IUserModel";
+import React, {useEffect} from 'react';
+import {IUser} from "../models/IUser";
+import {useAppDispatch, useAppSelector, userActions} from "../redux/store";
 
 const UsersComponent = () => {
-   const {userSlice:{allUsers}} = useStore();
+   const dispatch =  useAppDispatch();
+   const users = useAppSelector(state=>state.userSlice.users);
+   useEffect(() => {
+            dispatch(userActions.loadUsers());
+    }, []);
+
     return (
         <div>
             {
-                allUsers.map((user: IUserModel, index) => (
+                users.map((user:IUser,index) => (
 
                     <div key={index}>{user.id}. {user.name}</div>
 
