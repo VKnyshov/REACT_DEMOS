@@ -34,8 +34,7 @@ const userSlice = createSlice({
             .addCase(loadUsers.fulfilled, (state, action) => {
                 state.users = action.payload;
             })
-            .addCase(loadUsers.rejected, (action, state) => {
-            })
+
 });
 
 export const userActions = {
@@ -73,9 +72,7 @@ const postSlice = createSlice({
             .addCase(loadPosts.fulfilled, (state,action) =>{
                 state.posts = action.payload;
             })
-        .addCase(loadPosts.rejected, (state, action)=>{
-            //.....
-        })
+
 
 });
 export const postActions = {
@@ -85,9 +82,6 @@ export const postActions = {
 
 
 //========================================================================
-// type CommentsSliceType = {}
-
-
 
 type CommentSliceType = {
     comments: IComment[];
@@ -117,9 +111,6 @@ const commentSlice = createSlice({
         builder
             .addCase(loadComments.fulfilled, (state,action) =>{
                 state.comments = action.payload;
-            })
-            .addCase(loadComments.rejected, (state, action)=>{
-                //.....
             })
 
 });
