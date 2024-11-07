@@ -11,7 +11,7 @@ const HeaderComponent = () => {
            <li><Link to={'users'}>Users</Link></li>
            <li><Link to={'posts'}>Posts</Link></li>
            <li><Link to={'Comments'}>Comments</Link></li>
-           <li><Link to={'postComments'}>Posts & Comments</Link></li>
+           <li><Link to={'userPostComments'}>Users & Posts & Comments</Link></li>
         </ul>
         <hr/>
         </>

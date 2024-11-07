@@ -4,7 +4,7 @@ import MainLayout from "../layouts/MainLayout";
 import HomePage from "../pages/HomePage";
 import PostsPage from "../pages/PostsPage";
 import CommentsPage from "../pages/CommentsPage";
-import PostsCommentsPage from "../pages/PostsCommentsPage";
+import UsersPostsCommentsPage from "../pages/UsersPostsCommentsPage";
 import UsersPage from "../pages/UsersPage";
 
 export const router = createBrowserRouter([
@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
             {path:'users', element:<UsersPage/>},
             {path:'posts', element:<PostsPage/>},
             {path:'comments', element:<CommentsPage/>},
-            {path:'postComments', element:<PostsCommentsPage/>},
+            {path:'userPostComments', element:<UsersPostsCommentsPage/>},
         ]
     }
 
