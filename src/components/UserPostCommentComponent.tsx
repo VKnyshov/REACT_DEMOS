@@ -2,9 +2,9 @@ import React, {useEffect} from 'react';
 import {commentActions, postActions, useAppDispatch, useAppSelector, userActions} from "../redux/store";
 import {IUser} from "../models/IUser";
 
-const PostCommentComponent = () => {
+const UserPostCommentComponent = () => {
 
-    const dispatch =  useAppDispatch();
+    const dispatch = useAppDispatch();
 
     const users = useAppSelector(state => state.userSlice.users);
     const posts = useAppSelector(state => state.postSlice.posts);
@@ -19,25 +19,25 @@ const PostCommentComponent = () => {
     return (
         <div>
             {
-                users.map((user: IUser, index) => <
-                    div key={index}> {user.id}. {user.name}</div>)
+                users.map((user: IUser, index) =>
+                    (<div key={index}> {user.id}. {user.name}</div>))
             }
             <hr/>
             <hr/>
             {
                 posts.map((post, index) =>
-                    <div key={index}>{post.id}. {post.title}</div>)
+                    (<div key={index}>{post.id}. {post.title}</div>))
 
             }
             <hr/>
             <hr/>
             {
                 comments.map((comment, index) =>
-                    <div key={index}>{comment.id}. {comment.body}</div>
+                    (<div key={index}>{comment.id}. {comment.body}</div>)
                 )
             }
         </div>
     );
 };
 
-export default PostCommentComponent;
+export default UserPostCommentComponent;

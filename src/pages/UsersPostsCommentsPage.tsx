@@ -1,10 +1,10 @@
 import React from 'react';
-import PostCommentComponent from "../components/PostCommentComponent";
+import UserPostCommentComponent from "../components/UserPostCommentComponent";
 
 const UsersPostsCommentsPage = () => {
     return (
         <div>
-            <PostCommentComponent/>
+            <UserPostCommentComponent/>
         </div>
     );
 };
