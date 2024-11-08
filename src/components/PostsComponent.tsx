@@ -1,13 +1,14 @@
 import React, {useEffect} from 'react';
 import {IPost} from "../models/IPost";
-import {postActions, useAppDispatch, useAppSelector} from "../redux/store";
+import {useAppDispatch, useAppSelector} from "../redux/store";
+import {postActions} from "../slices/postSlice";
 
 const PostsComponent = () => {
         const dispatch =  useAppDispatch();
         const posts = useAppSelector(state=>state.postSlice.posts);
         useEffect(() => {
             dispatch(postActions.loadPosts());
-        }, []);
+        }, [dispatch]);
     return (
         <div>
             {posts.map((post: IPost, index) => (

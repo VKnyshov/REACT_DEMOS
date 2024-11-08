@@ -1,6 +1,9 @@
 import React, {useEffect} from 'react';
-import {commentActions, postActions, useAppDispatch, useAppSelector, userActions} from "../redux/store";
+import {useAppDispatch, useAppSelector} from "../redux/store";
 import {IUser} from "../models/IUser";
+import {userActions} from "../slices/userSlice";
+import {postActions} from "../slices/postSlice";
+import {commentActions} from "../slices/commentSlice";
 
 const UserPostCommentComponent = () => {
 

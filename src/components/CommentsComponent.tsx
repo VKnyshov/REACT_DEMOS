@@ -1,13 +1,14 @@
 import React, {useEffect} from 'react';
 import {IComment} from "../models/IComment";
-import {commentActions, useAppDispatch, useAppSelector} from "../redux/store";
+import {useAppDispatch, useAppSelector} from "../redux/store";
+import {commentActions} from "../slices/commentSlice";
 
 const CommentsComponent = () => {
     const dispatch =  useAppDispatch();
     const comments = useAppSelector(state=>state.commentSlice.comments);
     useEffect(() => {
         dispatch(commentActions.loadComments());
-    }, []);
+    }, [dispatch]);
 
     return (
         <div>
