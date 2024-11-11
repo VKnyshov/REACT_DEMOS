@@ -26,18 +26,24 @@ const UserPostCommentComponent = () => {
             {users.map((user: IUser) => (
 
                 <div key={user.id}>
-                    <h3>{user.id}. {user.name}</h3>
+                    <h2>{user.id}. {user.name}</h2>
                     <ul>
                         {posts.filter(post => post.userId === user.id)
                             .map((post: IPost, index) => (
-                                <li key={index}>{post.id}. {post.title}
+                                <li key={index}>
+                                    <h4>{post.id}. {post.title}</h4>
 
                                     <ul>
                                         {comments.filter(comment => comment.postId === post.id)
                                             .map((comment, index) => (
-                                                <li key={index}>{comment.body}</li>
+                                                <li key={index}>
+
+                                                    <h5>{comment.name}</h5>
+                                                    <p>{comment.body}</p>
+                                                </li>
                                             ))}
                                     </ul>
+
                                 </li>
                             ))}
 
